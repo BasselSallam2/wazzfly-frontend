@@ -4,13 +4,12 @@
 FROM node:22-alpine AS build
 WORKDIR /app
 
-ENV NODE_ENV=production
-
+# NODE_ENV=production before npm ci omits devDependencies (tsc/vite); set it only on build.
 COPY package*.json ./
 RUN npm ci --no-audit --no-fund
 
 COPY . .
-RUN npm run build
+RUN NODE_ENV=production npm run build
 
 # ---------- Runtime stage ----------
 FROM nginx:1.27-alpine AS runtime

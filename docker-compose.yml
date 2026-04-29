@@ -3,14 +3,14 @@
 #
 #   docker compose up -d --build
 #
-# Joins the existing `wazzfly_default` external network so it can reach the
-# backend container by hostname `backend` on port 3000. If you don't have that
-# network, create it first:
+# The SPA calls the REST API via VITE_* baked at image build time (Dockerfile
+# ARGS / Coolify Build Variables). nginx only serves static files.
+#
+# The external network `wazzfly_default` is optional (for other stack services).
+# Create it once if Compose errors on missing external network:
 #
 #   docker network create wazzfly_default
 #
-# Override the API host with `BACKEND_HOST` if your backend lives elsewhere
-# (e.g. host.docker.internal during local development).
 # ===========================================================================
 
 services:

@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { cn } from '@lib/utils/cn';
 import { ROUTES } from '@/config/constants';
 import { Icon } from '@components/ui/Icon';
+import { BrandLogo } from '@components/layout/BrandLogo';
 
 interface NavItem {
   label: string;
@@ -26,10 +27,8 @@ const navItems: NavItem[] = [
 export function SideNavBar() {
   return (
     <aside className="hidden h-screen w-sidebar shrink-0 flex-col border-r border-outline-variant bg-surface-container-lowest md:flex">
-      <div className="flex h-topbar items-center gap-2 border-b border-outline-variant px-5">
-        <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-on-primary">
-          <Icon name="bolt" size={18} weight={600} />
-        </div>
+      <div className="flex h-topbar items-center gap-3 border-b border-outline-variant px-5">
+        <BrandLogo className="h-9" />
         <div className="flex flex-col leading-tight">
           <span className="text-label-md font-bold tracking-tight text-on-surface">Wazzfly</span>
           <span className="text-[10px] uppercase tracking-widest text-on-surface-variant">

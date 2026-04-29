@@ -3,6 +3,7 @@ import { useAuthStore, selectIsAuthenticated } from '@store/authStore';
 import { LoginForm } from '../components/LoginForm';
 import { ROUTES } from '@/config/constants';
 import { Icon } from '@components/ui/Icon';
+import { BrandLogo } from '@components/layout/BrandLogo';
 
 export function LoginPage() {
   const isAuthed = useAuthStore(selectIsAuthenticated);
@@ -15,9 +16,7 @@ export function LoginPage() {
     <div className="grid min-h-screen lg:grid-cols-2">
       <div className="hidden flex-col justify-between bg-primary p-12 text-on-primary lg:flex">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-on-primary/10">
-            <Icon name="bolt" size={22} weight={600} />
-          </div>
+          <BrandLogo className="h-11 max-h-12" />
           <div>
             <p className="text-h2 font-bold tracking-tight">Wazzfly</p>
             <p className="text-label-sm uppercase tracking-widest text-on-primary/60">
@@ -55,9 +54,7 @@ export function LoginPage() {
       <div className="flex items-center justify-center bg-surface px-4 py-12 sm:px-12">
         <div className="w-full max-w-sm">
           <div className="mb-8 flex items-center gap-3 lg:hidden">
-            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-on-primary">
-              <Icon name="bolt" size={18} weight={600} />
-            </div>
+            <BrandLogo className="h-10" />
             <span className="text-h2 font-bold tracking-tight text-on-surface">Wazzfly Admin</span>
           </div>
           <h1 className="text-h1 font-semibold text-on-surface">Sign in</h1>

@@ -1,3 +1,6 @@
+/** Served from `public/brand/logo.png` — favicon and in-app branding */
+export const BRAND_LOGO_URL = '/brand/logo.png';
+
 export const ROUTES = {
   login: '/login',
   overview: '/',

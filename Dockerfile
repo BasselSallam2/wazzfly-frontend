@@ -43,5 +43,10 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=build /app/dist /usr/share/nginx/html
 
-EXPOSE 80
+# Matches common PaaS defaults (e.g. Coolify) — map proxy to container port 3000.
+EXPOSE 3000
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+  CMD wget -q --spider http://127.0.0.1:3000/ || exit 1
+
 CMD ["nginx", "-g", "daemon off;"]

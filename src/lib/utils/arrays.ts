@@ -1,0 +1,25 @@
+export function unique<T>(items: T[]): T[] {
+  return Array.from(new Set(items));
+}
+
+export function groupBy<T, K extends string | number>(
+  items: T[],
+  selector: (item: T) => K,
+): Record<K, T[]> {
+  return items.reduce<Record<K, T[]>>(
+    (acc, item) => {
+      const key = selector(item);
+      (acc[key] ||= []).push(item);
+      return acc;
+    },
+    {} as Record<K, T[]>,
+  );
+}
+
+export function chunk<T>(items: T[], size: number): T[][] {
+  const result: T[][] = [];
+  for (let i = 0; i < items.length; i += size) {
+    result.push(items.slice(i, i + size));
+  }
+  return result;
+}

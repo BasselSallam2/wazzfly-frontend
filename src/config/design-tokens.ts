@@ -1,0 +1,37 @@
+export const designTokens = {
+  colors: {
+    primary: '#0F172A',
+    primaryContainer: '#dde1ff',
+    secondary: '#505f76',
+    secondaryContainer: '#d0e1fb',
+    success: '#16a34a',
+    successContainer: '#dcfce7',
+    warning: '#d97706',
+    warningContainer: '#fef3c7',
+    error: '#ba1a1a',
+    errorContainer: '#ffdad6',
+    info: '#0284c7',
+    infoContainer: '#e0f2fe',
+    surface: '#f7f9fb',
+    surfaceContainer: '#eceef0',
+    surfaceContainerLow: '#f2f4f6',
+    surfaceContainerHigh: '#e6e8ea',
+    surfaceContainerHighest: '#e0e3e5',
+    onSurface: '#191c1e',
+    onSurfaceVariant: '#45464d',
+    outline: '#76777d',
+    outlineVariant: '#c6c6cd',
+  },
+  chart: {
+    primary: '#0F172A',
+    secondary: '#505f76',
+    success: '#16a34a',
+    warning: '#d97706',
+    danger: '#ba1a1a',
+    info: '#0284c7',
+    neutral: '#c6c6cd',
+    accent: '#7c3aed',
+  },
+} as const;
+
+export type DesignTokens = typeof designTokens;

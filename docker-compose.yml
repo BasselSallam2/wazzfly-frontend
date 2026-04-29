@@ -1,0 +1,36 @@
+# ===========================================================================
+# Wazzfly Admin Web — production container
+#
+#   docker compose up -d --build
+#
+# Joins the existing `wazzfly_default` external network so it can reach the
+# backend container by hostname `backend` on port 3000. If you don't have that
+# network, create it first:
+#
+#   docker network create wazzfly_default
+#
+# Override the API host with `BACKEND_HOST` if your backend lives elsewhere
+# (e.g. host.docker.internal during local development).
+# ===========================================================================
+
+services:
+  wazzfly-admin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: wazzfly/admin:latest
+    container_name: wazzfly-admin
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    networks:
+      - wazzfly_default
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/index.html"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+networks:
+  wazzfly_default:
+    external: true
